@@ -44,6 +44,7 @@
        * Currently using bulk only, but it could benefit from incremental analysis
     - **(Done)** Remove the pres_cost variable to reduce the size of a hot data structure.
        * Leverage the trade-off between storing the variable V.S. calculating the value on the fly
+    - **(Done)** Create router congestion report when desired. Prints out all the overused nodes(capacity, occupany, node type), info of blocks at their locations, as well as all the nets going through them and the driving block info on these nets.
     - **(Ongoing)** Leverage the ability to rapidly timing analyze small changes to the placement to improve timing optimize late in the placement (mohamed.elgammal@mail.utoronto.ca)
        * **(Done)** Add a new interface that maps atom netlist pins raw setup slacks to those of the clb netlist pins.
        * **(Done)** Lots of things can be tried here; I think a new cost function term that is based on a (weighted?) sum of the negative or near-negative slacks would be good
