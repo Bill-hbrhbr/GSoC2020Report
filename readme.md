@@ -1,29 +1,6 @@
 ===== Link to all related PRs/Issues =====
   * https://github.com/verilog-to-routing/vtr-verilog-to-routing/issues?q=assignee%3ABill-hbrhbr
 
-===== Background =====
-
-  * Reading:
-    * VTR 8 paper: the main CAD system we want to test / have designs go through. http://www.eecg.utoronto.ca/~kmurray/vtr/vtr8_trets.pdf
-    * Tatum timing analyzer:  http://www.eecg.utoronto.ca/~kmurray/tatum/fpt2018_tatum.pdf
-      * The timing analysis references in this paper are also likely good to check out, as the tatum paper assumes quite a bit of background. I can also point you at some tutorial references on timing analysis if you'd like -- let me know.
-  * Chapters 1 - 4 of arch_and_cad.pdf (my book). Part of Chapter 2 (timing analysis) and Chapter 3 (placement) are the most relevant (both have evolved, but this gives the basic idea) {{:vaughn:arch_and_cad.pdf|}}
-
-  * Docs & tutorials:
-    * The VTR project is at https://github.com/verilog-to-routing/vtr-verilog-to-routing/
-    * Documentation is here: https://docs.verilogtorouting.org/en/latest/vtr/
-    * Go through the New Developer Tutorial at https://docs.verilogtorouting.org/en/latest/dev/tutorials/new_developer_tutorial/
-    * Read the graphics section at https://docs.verilogtorouting.org/en/latest/vpr/graphics/
-    * Experiment with the graphics, try them out.  Update any incorrect documentation and note anything you find counter-intuitive
-
-  * VPR compile options
-    * **Fast**: make CMAKE_PARAMS="-DVTR_ASSERT_LEVEL=2 -DVTR_ENABLE_PROFILING=OFF -DVTR_ENABLE_SANITIZE=off -DVTR_IPO_BUILD=off -DWITH_BLIFEXPLORER=off" vpr -j16
-    * **Regular**: make CMAKE_PARAMS="-DVTR_ASSERT_LEVEL=3 -DVTR_ENABLE_SANITIZE=off -DVTR_IPO_BUILD=off -DWITH_BLIFEXPLORER=on" vpr -j16
-    * **Profile**： make CMAKE_PARAMS="-DVTR_ENABLE_PROFILING=ON" vpr -j16 && make vpr -no-pie
-    * **Sanitized**: make CMAKE_PARAMS="-DVTR_ASSERT_LEVEL=3 -DVTR_ENABLE_SANITIZE=on -DVTR_IPO_BUILD=off -DWITH_BLIFEXPLORER=on" vpr -j16
-    * **Debug**: make CMAKE_PARAMS="-DVTR_ASSERT_LEVEL=4 -DVTR_ENABLE_SANITIZE=on -DVTR_IPO_BUILD=off -DWITH_BLIFEXPLORER=on" vpr -j16
-    * **Compile**: make CMAKE_PARAMS="-DVTR_ASSERT_LEVEL=3 -DWITH_BLIFEXPLORER=on -DVTR_ENABLE_STRICT_COMPILE=on -DVTR_IPO_BUILD=off" -j16
-
 ===== Plan =====
   * Incremental timing analysis (k.murray@mail.utoronto.ca)
     - **(Done)** Review the pull request that adds incremental timing analysis to VTR.  Is it sufficiently commented?  Any code that is hard to understand?  Send Kevin your feedback via an online code review at https://github.com/verilog-to-routing/vtr-verilog-to-routing/pull/1296
@@ -246,5 +223,25 @@
   - Read "Architecture and CAD for Deep-Submicron FPGAs" Chapters 1-4
   - Started studying the VPR code base (vpr_api.cpp, place.cpp, etc.)
 
+===== Background =====
 
-  
+  * Reading:
+    * VTR 8 paper: the main CAD system we want to test / have designs go through. http://www.eecg.utoronto.ca/~kmurray/vtr/vtr8_trets.pdf
+    * Tatum timing analyzer:  http://www.eecg.utoronto.ca/~kmurray/tatum/fpt2018_tatum.pdf
+      * The timing analysis references in this paper are also likely good to check out, as the tatum paper assumes quite a bit of background. I can also point you at some tutorial references on timing analysis if you'd like -- let me know.
+  * Chapters 1 - 4 of arch_and_cad.pdf (my book). Part of Chapter 2 (timing analysis) and Chapter 3 (placement) are the most relevant (both have evolved, but this gives the basic idea) {{:vaughn:arch_and_cad.pdf|}}
+
+  * Docs & tutorials:
+    * The VTR project is at https://github.com/verilog-to-routing/vtr-verilog-to-routing/
+    * Documentation is here: https://docs.verilogtorouting.org/en/latest/vtr/
+    * Go through the New Developer Tutorial at https://docs.verilogtorouting.org/en/latest/dev/tutorials/new_developer_tutorial/
+    * Read the graphics section at https://docs.verilogtorouting.org/en/latest/vpr/graphics/
+    * Experiment with the graphics, try them out.  Update any incorrect documentation and note anything you find counter-intuitive
+
+  * VPR compile options
+    * **Fast**: make CMAKE_PARAMS="-DVTR_ASSERT_LEVEL=2 -DVTR_ENABLE_PROFILING=OFF -DVTR_ENABLE_SANITIZE=off -DVTR_IPO_BUILD=off -DWITH_BLIFEXPLORER=off" vpr -j16
+    * **Regular**: make CMAKE_PARAMS="-DVTR_ASSERT_LEVEL=3 -DVTR_ENABLE_SANITIZE=off -DVTR_IPO_BUILD=off -DWITH_BLIFEXPLORER=on" vpr -j16
+    * **Profile**： make CMAKE_PARAMS="-DVTR_ENABLE_PROFILING=ON" vpr -j16 && make vpr -no-pie
+    * **Sanitized**: make CMAKE_PARAMS="-DVTR_ASSERT_LEVEL=3 -DVTR_ENABLE_SANITIZE=on -DVTR_IPO_BUILD=off -DWITH_BLIFEXPLORER=on" vpr -j16
+    * **Debug**: make CMAKE_PARAMS="-DVTR_ASSERT_LEVEL=4 -DVTR_ENABLE_SANITIZE=on -DVTR_IPO_BUILD=off -DWITH_BLIFEXPLORER=on" vpr -j16
+    * **Compile**: make CMAKE_PARAMS="-DVTR_ASSERT_LEVEL=3 -DWITH_BLIFEXPLORER=on -DVTR_ENABLE_STRICT_COMPILE=on -DVTR_IPO_BUILD=off" -j16
